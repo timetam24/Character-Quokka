@@ -1,0 +1,332 @@
+:root {
+  --main-color: #d7b091;
+  --dark-color: #36281d;
+}
+
+body {
+  background-color: #fcece3;
+}
+
+/* animation */
+@keyframes quokkaMoving {
+  0% {
+    transform: translate(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%) rotate(-15deg);
+  }
+  80% {
+    transform: translate(-50%) rotate(15deg);
+  }
+  to {
+    transform: translate(-50%) rotate(-30deg);
+  }
+}
+
+@keyframes tongueMoving {
+  50% {
+    transform: rotateX(10deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+    height: 25%;
+  }
+}
+
+@keyframes tongueLineMoving {
+  50% {
+    transform: rotateX(10deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+    height: 80%;
+  }
+}
+
+@keyframes eyeLeftMoving {
+  0% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(8deg) scale(1);
+  }
+  10% {
+    width: 40px;
+    height: 26px;
+    border-radius: 20px 20px 4px 4px;
+    transform: rotate(8deg) scale(1.05) translateY(10%);
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(8deg) scale(1);
+  }
+}
+
+@keyframes eyeRightMoving {
+  0% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(-8deg) scale(1);
+  }
+  10% {
+    width: 40px;
+    height: 26px;
+    border-radius: 20px 20px 4px 4px;
+    transform: rotate(-8deg) scale(1.05) translateY(10%);
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+
+@keyframes sunglassDropping {
+  90% {
+    top: 51px;
+  }
+  93% {
+    top: 61px;
+  }
+  95% {
+    top: 51px;
+  }
+  97% {
+    top: 46px;
+  }
+  100% {
+    top: 51px;
+  }
+}
+
+@keyframes earLeftMoving {
+  30% {
+    transform: rotate(-32deg);
+  }
+  to {
+    transform: rotate(-34deg);
+  }
+}
+
+@keyframes earRightMoving {
+  30% {
+    transform: rotate(32deg);
+  }
+  to {
+    transform: rotate(34deg);
+  }
+}
+
+@keyframes cheekMoving {
+  to {
+    transform: scale(1.4);
+  }
+}
+
+.quokka {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  animation: quokkaMoving 5s ease-in-out infinite alternate;
+}
+
+.quokka .ear,
+.quokka .face {
+  background-color: var(--main-color);
+  border: none;
+}
+
+.ear {
+  display: inline-block;
+  position: absolute;
+  width: 130px;
+  height: 230px;
+  top: 80px;
+  box-shadow: 0 -3px 3px 1px var(--main-color);
+}
+
+.ear.left {
+  left: 40%;
+  border-radius: 60% 60%;
+  transform-origin: 100% 100%;
+  transform: rotate(-30deg);
+  animation: earLeftMoving 0.7s infinite alternate;
+}
+
+.ear.left::before {
+  border-radius: 50% 10% 0 0;
+}
+
+.ear.right {
+  right: 40%;
+  border-radius: 60% 60%;
+  transform-origin: 0% 100%;
+  transform: rotate(30deg);
+  animation: earRightMoving 0.7s infinite alternate;
+}
+
+.ear.right::before {
+  border-radius: 10% 50% 0 0;
+}
+
+.face.up {
+  width: 360px;
+  height: 400px;
+  top: 62%;
+  left: 50%;
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 -3px 3px 1px var(--main-color);
+}
+
+.face.down {
+  background-color: var(--main-color);
+  position: absolute;
+  width: 430px;
+  height: 330px;
+  border-radius: 50%;
+  top: 68%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 3px 3px 1px var(--main-color);
+}
+
+.face.down .eye {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--dark-color);
+}
+
+.face.down .eye.left {
+  position: absolute;
+  top: 50px;
+  left: 34%;
+  transform: rotate(8deg);
+  animation: eyeLeftMoving 2s cubic-bezier(0.21, 0.78, 0.73, 0.26) infinite
+    alternate;
+}
+
+.face.down .eye.right {
+  position: absolute;
+  top: 50px;
+  right: 34%;
+  transform: rotate(-8deg);
+  animation: eyeRightMoving 2s cubic-bezier(0.21, 0.78, 0.73, 0.26) infinite
+    alternate;
+}
+
+.face.down .nose {
+  position: absolute;
+  width: 70px;
+  height: 60px;
+  top: 35%;
+  left: 50%;
+  background: var(--dark-color);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.face.down .mouth {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: -10%;
+  left: 27%;
+  border-radius: 50%;
+  background: transparent;
+  border: 10px solid transparent;
+  border-color: transparent transparent var(--dark-color) transparent;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.face.down .tongue {
+  position: absolute;
+  width: 45px;
+  height: 25px;
+  top: 64%;
+  left: 43%;
+  background-color: #be4648;
+  border: 8px solid var(--dark-color);
+  border-radius: 0 0 50% 50%;
+  border-top: transparent;
+  animation: tongueMoving 1s infinite ease-out alternate-reverse;
+}
+
+.tongue::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 18px;
+  left: 40%;
+  background: var(--dark-color);
+  animation: tongueLineMoving 1s infinite ease-out alternate-reverse;
+}
+
+.face.down .cheek {
+  position: absolute;
+  width: 36px;
+  height: 15px;
+  top: 32%;
+  border-radius: 50%;
+  background-color: #fa531c83;
+  filter: blur(4px);
+  animation: cheekMoving 0.4s ease infinite alternate;
+}
+
+.face.down .cheek.left {
+  left: 24%;
+}
+
+.face .cheek.right {
+  right: 24%;
+}
+
+.sunglass {
+  background-color: black;
+  position: absolute;
+  width: 65px;
+  top: -14%;
+  left: 40%;
+  height: 10px;
+  animation: sunglassDropping 0.5s ease-out forwards;
+  animation-delay: 3s;
+  z-index: 7;
+}
+
+.sunglass::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 95px;
+  height: 40px;
+  left: 60px;
+  top: -5px;
+  border-radius: 8px 27px 23px 48px;
+}
+
+.sunglass::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 95px;
+  height: 40px;
+  left: -60px;
+  top: -5px;
+  border-radius: 27px 8px 48px 23px;
+}
